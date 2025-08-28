@@ -1,0 +1,18 @@
+const createBoard = (function () {
+  const gameBoard = [
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+  ];
+
+  const getBoard = () => {
+    console.log("The board is ready");
+    return gameBoard;
+  };
+
+  return { getBoard, placeMarker };
+})();
+
+function createPlayer() {}
+
+function GameController() {}
