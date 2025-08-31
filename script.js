@@ -7,7 +7,12 @@ const createBoard = (function () {
   };
 
   const placeMarker = (index, marker) => {
-    gameBoard[index] = marker;
+    if (index < 0 || index > gameBoard.length || gameBoard[index] !== "") {
+      return false;
+    } else {
+      gameBoard[index] = marker;
+      return false;
+    }
   };
 
   return { getBoard, placeMarker };
@@ -39,3 +44,9 @@ function GameController() {
 }
 
 const game = GameController();
+
+game.playRound(0);
+game.playRound(1);
+game.playRound(3);
+game.playRound(6);
+game.playRound(6);
