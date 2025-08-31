@@ -23,6 +23,10 @@ function GameController() {
 
   let currentPlayer = player1;
 
+  const switchPlayerTurn = () => {
+    currentPlayer = currentPlayer === player1 ? player2 : player1;
+  };
+
   const playRound = (index) => {
     createBoard.placeMarker(index, `${currentPlayer.marker}`);
 
