@@ -83,3 +83,30 @@ function GameController() {
 }
 
 const game = GameController();
+
+// Player 1 wins
+
+// game.playRound(0);
+// game.playRound(1);
+// game.playRound(3);
+// game.playRound(7);
+// game.playRound(6);
+
+// Player 2 wins
+// game.playRound(3);
+// game.playRound(0);
+// game.playRound(5);
+// game.playRound(4);
+// game.playRound(7);
+// game.playRound(8);
+
+// Draw
+game.playRound(3);
+game.playRound(0);
+game.playRound(4);
+game.playRound(5);
+game.playRound(8);
+game.playRound(6);
+game.playRound(2);
+game.playRound(1);
+game.playRound(7);
