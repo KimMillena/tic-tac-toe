@@ -1,8 +1,7 @@
-const createBoard = (function () {
+const newBoard = (function () {
   const gameBoard = ["", "", "", "", "", "", "", "", ""];
 
   const getBoard = () => {
-    console.log("The board is ready");
     return gameBoard;
   };
 
@@ -32,21 +31,55 @@ function GameController() {
     currentPlayer = currentPlayer === player1 ? player2 : player1;
   };
 
+  const checkWinner = (marker) => {
+    if (
+      (newBoard.getBoard()[0] === marker &&
+        newBoard.getBoard()[1] === marker &&
+        newBoard.getBoard()[2] === marker) ||
+      (newBoard.getBoard()[3] === marker &&
+        newBoard.getBoard()[4] === marker &&
+        newBoard.getBoard()[5] === marker) ||
+      (newBoard.getBoard()[6] === marker &&
+        newBoard.getBoard()[7] === marker &&
+        newBoard.getBoard()[8] === marker) ||
+      (newBoard.getBoard()[0] === marker &&
+        newBoard.getBoard()[3] === marker &&
+        newBoard.getBoard()[6] === marker) ||
+      (newBoard.getBoard()[1] === marker &&
+        newBoard.getBoard()[4] === marker &&
+        newBoard.getBoard()[7] === marker) ||
+      (newBoard.getBoard()[2] === marker &&
+        newBoard.getBoard()[5] === marker &&
+        newBoard.getBoard()[8] === marker) ||
+      (newBoard.getBoard()[0] === marker &&
+        newBoard.getBoard()[4] === marker &&
+        newBoard.getBoard()[8] === marker) ||
+      (newBoard.getBoard()[2] === marker &&
+        newBoard.getBoard()[4] === marker &&
+        newBoard.getBoard()[6] === marker)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const playRound = (index) => {
-    createBoard.placeMarker(index, `${currentPlayer.marker}`);
+    newBoard.placeMarker(index, `${currentPlayer.marker}`);
+
+    if (checkWinner(currentPlayer.marker)) {
+      console.log(`${currentPlayer.name} Wins!`);
+      return console.log("Game Over.");
+    } else if (!newBoard.getBoard().includes("")) {
+      console.log("It's a Draw");
+      return console.log("Game Over.");
+    }
 
     switchPlayerTurn();
-
-    console.log(createBoard.getBoard());
+    console.log(newBoard.getBoard());
   };
 
   return { playRound };
 }
 
 const game = GameController();
-
-game.playRound(0);
-game.playRound(1);
-game.playRound(3);
-game.playRound(6);
-game.playRound(6);
