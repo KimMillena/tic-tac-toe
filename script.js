@@ -13,4 +13,13 @@ function createPlayer(name, marker) {
   return { name, marker };
 }
 
-function GameController() {}
+function GameController() {
+  const player1 = createPlayer("Kim", "X");
+  const player2 = createPlayer("Mik", "O");
+
+  let currentPlayer = player1;
+
+  return { playRound };
+}
+
+const game = GameController();
