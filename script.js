@@ -6,6 +6,10 @@ const createBoard = (function () {
     return gameBoard;
   };
 
+  const placeMarker = (index, marker) => {
+    gameBoard[index] = marker;
+  };
+
   return { getBoard, placeMarker };
 })();
 
@@ -18,6 +22,14 @@ function GameController() {
   const player2 = createPlayer("Mik", "O");
 
   let currentPlayer = player1;
+
+  const playRound = (index) => {
+    createBoard.placeMarker(index, `${currentPlayer.marker}`);
+
+    switchPlayerTurn();
+
+    console.log(createBoard.getBoard());
+  };
 
   return { playRound };
 }
