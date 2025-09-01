@@ -10,6 +10,7 @@ const newBoard = (function () {
       return false;
     } else {
       gameBoard[index] = marker;
+      display.drawMarker(index, marker);
       return false;
     }
   };
@@ -65,6 +66,8 @@ function gameController() {
   };
 
   const playRound = (index) => {
+    console.log(index);
+
     newBoard.placeMarker(index, `${currentPlayer.marker}`);
 
     if (checkWinner(currentPlayer.marker)) {
@@ -90,13 +93,26 @@ function displayController() {
     cell.classList.add(`board-cell`);
     cell.setAttribute("data-index", index);
 
+    cell.addEventListener("click", (e) => {
+      game.playRound(e.target.getAttribute("data-index"));
+    });
+
     board.appendChild(cell);
   });
+
+  const drawMarker = (index, marker) => {
+    const cells = document.querySelectorAll(".board-cell");
+    const cell = cells[index];
+    cell.textContent = `${marker}`;
+  };
+
+  return {
+    drawMarker,
+  };
 }
 
-displayController();
-
 const game = gameController();
+const display = displayController();
 
 // Player 1 wins
 
@@ -115,12 +131,12 @@ const game = gameController();
 // game.playRound(8);
 
 // Draw
-game.playRound(3);
-game.playRound(0);
-game.playRound(4);
-game.playRound(5);
-game.playRound(8);
-game.playRound(6);
-game.playRound(2);
-game.playRound(1);
-game.playRound(7);
+// game.playRound(3);
+// game.playRound(0);
+// game.playRound(4);
+// game.playRound(5);
+// game.playRound(8);
+// game.playRound(6);
+// game.playRound(2);
+// game.playRound(1);
+// game.playRound(7);
