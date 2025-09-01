@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.title {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board {
+  display: grid;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.board-cell {
+  border: 1px solid black;
+}

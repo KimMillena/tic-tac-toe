@@ -21,7 +21,7 @@ function createPlayer(name, marker) {
   return { name, marker };
 }
 
-function GameController() {
+function gameController() {
   const player1 = createPlayer("Kim", "X");
   const player2 = createPlayer("Mik", "O");
 
@@ -82,7 +82,21 @@ function GameController() {
   return { playRound };
 }
 
-const game = GameController();
+function displayController() {
+  const board = document.querySelector(".board");
+
+  newBoard.getBoard().forEach((value, index) => {
+    const cell = document.createElement("div");
+    cell.classList.add(`board-cell`);
+    cell.setAttribute("data-index", index);
+
+    board.appendChild(cell);
+  });
+}
+
+displayController();
+
+const game = gameController();
 
 // Player 1 wins
 
