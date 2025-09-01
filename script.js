@@ -7,6 +7,7 @@ const newBoard = (function () {
 
   const placeMarker = (index, marker) => {
     if (index < 0 || index > gameBoard.length || gameBoard[index] !== "") {
+      console.log("Can't");
       return false;
     } else {
       gameBoard[index] = marker;
@@ -66,16 +67,15 @@ function gameController() {
   };
 
   const playRound = (index) => {
-    console.log(index);
+    const playerName = currentPlayer.name;
+    const playerMarker = currentPlayer.marker;
 
-    newBoard.placeMarker(index, `${currentPlayer.marker}`);
+    newBoard.placeMarker(index, `${playerMarker}`);
 
-    if (checkWinner(currentPlayer.marker)) {
-      console.log(`${currentPlayer.name} Wins!`);
-      return console.log("Game Over.");
+    if (checkWinner(playerMarker)) {
+      display.displayResult("Winner", playerName);
     } else if (!newBoard.getBoard().includes("")) {
-      console.log("It's a Draw");
-      return console.log("Game Over.");
+      display.displayResult("Draw", playerName);
     }
 
     switchPlayerTurn();
@@ -87,6 +87,7 @@ function gameController() {
 
 function displayController() {
   const board = document.querySelector(".board");
+  const dialog = document.querySelector(".modal");
 
   newBoard.getBoard().forEach((value, index) => {
     const cell = document.createElement("div");
@@ -100,6 +101,21 @@ function displayController() {
     board.appendChild(cell);
   });
 
+  const displayResult = (gameResult, playerName) => {
+    const dialogGameResult = document.querySelector(".game-result");
+    const dialogPlayerName = document.querySelector(".player-name");
+    const newBtn = document.querySelector(".new-btn");
+
+    dialogGameResult.textContent = `${gameResult}:`;
+    dialogPlayerName.textContent = `${playerName}`;
+
+    newBtn.addEventListener("click", () => {
+      dialog.close();
+    });
+
+    dialog.showModal();
+  };
+
   const drawMarker = (index, marker) => {
     const cells = document.querySelectorAll(".board-cell");
     const cell = cells[index];
@@ -108,6 +124,7 @@ function displayController() {
 
   return {
     drawMarker,
+    displayResult,
   };
 }
 

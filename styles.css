@@ -15,6 +15,8 @@
   justify-content: center;
 }
 
+/* BOARD STYLINGS */
+
 .board {
   display: grid;
   width: 500px;
@@ -29,4 +31,29 @@
   align-items: center;
   justify-content: center;
   border: 1px solid black;
+}
+
+/* MODAL STYLINGS */
+
+.modal {
+  position: absolute;
+  top: 35%;
+  left: 38%;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  min-width: 400px;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.modal-content .player-name {
+  font-size: 1.5rem;
 }
