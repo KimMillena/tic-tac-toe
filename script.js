@@ -7,12 +7,11 @@ const newBoard = (function () {
 
   const placeMarker = (index, marker) => {
     if (index < 0 || index > gameBoard.length || gameBoard[index] !== "") {
-      console.log("Can't");
       return false;
     } else {
       gameBoard[index] = marker;
       display.drawMarker(index, marker);
-      return false;
+      return true;
     }
   };
 
@@ -70,7 +69,9 @@ function gameController() {
     const playerName = currentPlayer.name;
     const playerMarker = currentPlayer.marker;
 
-    newBoard.placeMarker(index, `${playerMarker}`);
+    const validMove = newBoard.placeMarker(index, `${playerMarker}`);
+
+    if (!validMove) return;
 
     if (checkWinner(playerMarker)) {
       display.displayResult("Winner", playerName);
