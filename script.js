@@ -50,6 +50,11 @@ function gameController() {
     inputDialog.close();
   });
 
+  const newRound = () => {
+    newBoard.resetBoard();
+    display.displayBoard();
+  };
+
   const switchPlayerTurn = () => {
     currentPlayer = currentPlayer === player1 ? player2 : player1;
     display.displayTurn(currentPlayer);
@@ -106,7 +111,7 @@ function gameController() {
     console.log(newBoard.getBoard());
   };
 
-  return { playRound };
+  return { playRound, newRound };
 }
 
 function displayController() {
@@ -149,6 +154,7 @@ function displayController() {
     dialogPlayerName.textContent = `${playerName}`;
 
     newBtn.addEventListener("click", () => {
+      game.newRound();
       dialog.close();
     });
 
