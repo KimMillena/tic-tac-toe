@@ -44,6 +44,7 @@ function gameController() {
 
   const switchPlayerTurn = () => {
     currentPlayer = currentPlayer === player1 ? player2 : player1;
+    display.displayTurn(currentPlayer);
   };
 
   const checkWinner = (marker) => {
@@ -122,6 +123,11 @@ function displayController() {
     cell.textContent = `${marker}`;
   };
 
+  const displayTurn = (currentPlayer) => {
+    const playerTurn = document.querySelector(".player-turn");
+    playerTurn.textContent = `${currentPlayer.name}'s turn`;
+  };
+
   const displayResult = (gameResult, playerName) => {
     const dialogGameResult = document.querySelector(".game-result");
     const dialogPlayerName = document.querySelector(".player-name");
@@ -139,6 +145,7 @@ function displayController() {
 
   return {
     drawMarker,
+    displayTurn,
     displayResult,
   };
 }
