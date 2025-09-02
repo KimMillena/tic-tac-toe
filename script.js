@@ -1,5 +1,5 @@
 const newBoard = (function () {
-  const gameBoard = ["", "", "", "", "", "", "", "", ""];
+  let gameBoard = ["", "", "", "", "", "", "", "", ""];
 
   const getBoard = () => {
     return gameBoard;
@@ -106,20 +106,24 @@ function gameController() {
 }
 
 function displayController() {
-  const board = document.querySelector(".board");
   const dialog = document.querySelector(".modal");
 
-  newBoard.getBoard().forEach((value, index) => {
-    const cell = document.createElement("div");
-    cell.classList.add(`board-cell`);
-    cell.setAttribute("data-index", index);
+  const displayBoard = () => {
+    const board = document.querySelector(".board");
+    board.innerHTML = "";
 
-    cell.addEventListener("click", (e) => {
-      game.playRound(e.target.getAttribute("data-index"));
+    newBoard.getBoard().forEach((value, index) => {
+      const cell = document.createElement("div");
+      cell.classList.add(`board-cell`);
+      cell.setAttribute("data-index", index);
+
+      cell.addEventListener("click", (e) => {
+        game.playRound(e.target.getAttribute("data-index"));
+      });
+
+      board.appendChild(cell);
     });
-
-    board.appendChild(cell);
-  });
+  };
 
   const drawMarker = (index, marker) => {
     const cells = document.querySelectorAll(".board-cell");
@@ -147,7 +151,10 @@ function displayController() {
     dialog.showModal();
   };
 
+  displayBoard();
+
   return {
+    displayBoard,
     drawMarker,
     displayTurn,
     displayResult,
