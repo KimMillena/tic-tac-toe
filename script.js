@@ -11,6 +11,7 @@ const newBoard = (function () {
     } else {
       gameBoard[index] = marker;
       display.drawMarker(index, marker);
+
       return true;
     }
   };
@@ -25,8 +26,11 @@ function createPlayer(name, marker) {
 function gameController() {
   const inputDialog = document.querySelector(".input-modal");
   const submitBtn = document.querySelector(".submit-btn");
+
   let player1 = createPlayer("Player 1", "X");
   let player2 = createPlayer("Player 2", "O");
+  let currentPlayer = player1;
+  display.displayTurn(currentPlayer);
 
   inputDialog.showModal();
 
@@ -37,10 +41,10 @@ function gameController() {
     player1 = createPlayer(player1Name, "X");
     player2 = createPlayer(player2Name, "O");
 
+    currentPlayer = player1;
+    display.displayTurn(currentPlayer);
     inputDialog.close();
   });
-
-  let currentPlayer = player1;
 
   const switchPlayerTurn = () => {
     currentPlayer = currentPlayer === player1 ? player2 : player1;
@@ -150,8 +154,8 @@ function displayController() {
   };
 }
 
-const game = gameController();
 const display = displayController();
+const game = gameController();
 
 // Player 1 wins
 
