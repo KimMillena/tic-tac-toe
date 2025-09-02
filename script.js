@@ -23,8 +23,22 @@ function createPlayer(name, marker) {
 }
 
 function gameController() {
-  const player1 = createPlayer("Kim", "X");
-  const player2 = createPlayer("Mik", "O");
+  const inputDialog = document.querySelector(".input-modal");
+  const submitBtn = document.querySelector(".submit-btn");
+  let player1 = createPlayer("Player 1", "X");
+  let player2 = createPlayer("Player 2", "O");
+
+  inputDialog.showModal();
+
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const player1Name = document.querySelector("#player1").value;
+    const player2Name = document.querySelector("#player2").value;
+    player1 = createPlayer(player1Name, "X");
+    player2 = createPlayer(player2Name, "O");
+
+    inputDialog.close();
+  });
 
   let currentPlayer = player1;
 
@@ -89,11 +103,6 @@ function gameController() {
 function displayController() {
   const board = document.querySelector(".board");
   const dialog = document.querySelector(".modal");
-  const inputDialog = document.querySelector(".input-modal");
-  const player1Name = document.querySelector("#player1");
-  const player2Name = document.querySelector("#player2");
-
-  inputDialog.showModal();
 
   newBoard.getBoard().forEach((value, index) => {
     const cell = document.createElement("div");
