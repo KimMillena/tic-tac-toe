@@ -89,6 +89,11 @@ function gameController() {
 function displayController() {
   const board = document.querySelector(".board");
   const dialog = document.querySelector(".modal");
+  const inputDialog = document.querySelector(".input-modal");
+  const player1Name = document.querySelector("#player1");
+  const player2Name = document.querySelector("#player2");
+
+  inputDialog.showModal();
 
   newBoard.getBoard().forEach((value, index) => {
     const cell = document.createElement("div");
@@ -101,6 +106,12 @@ function displayController() {
 
     board.appendChild(cell);
   });
+
+  const drawMarker = (index, marker) => {
+    const cells = document.querySelectorAll(".board-cell");
+    const cell = cells[index];
+    cell.textContent = `${marker}`;
+  };
 
   const displayResult = (gameResult, playerName) => {
     const dialogGameResult = document.querySelector(".game-result");
@@ -115,12 +126,6 @@ function displayController() {
     });
 
     dialog.showModal();
-  };
-
-  const drawMarker = (index, marker) => {
-    const cells = document.querySelectorAll(".board-cell");
-    const cell = cells[index];
-    cell.textContent = `${marker}`;
   };
 
   return {

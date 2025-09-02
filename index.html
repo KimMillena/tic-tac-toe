@@ -10,9 +10,24 @@
 
 <body>
     <h1 class="title">Tic Tac Toe</h1>
+    <h2 class="player-turn"></h2>
     <main class="main">
         <div class="board"></div>
     </main>
+
+    <dialog class="input-modal">
+        <form class="player-name-form">
+            <div class="form-row">
+                <label for="p1-name">Player 1 name:</label>
+                <input type="text" id="player1" class="player-input" name="player-input" placeholder="Player 1 name">
+            </div>
+            <div class="form-row">
+                <label for="p1-name">Player 2 name:</label>
+                <input type="text" id="player2" class="player-input" name="player-input" placeholder="Player 2 name">
+            </div>
+            <button class="submit-btn">Submit</button>
+        </form>
+    </dialog>
 
     <dialog class="modal">
         <div class="modal-content">
