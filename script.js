@@ -5,6 +5,10 @@ const newBoard = (function () {
     return gameBoard;
   };
 
+  const resetBoard = () => {
+    gameBoard = ["", "", "", "", "", "", "", "", ""];
+  };
+
   const placeMarker = (index, marker) => {
     if (index < 0 || index > gameBoard.length || gameBoard[index] !== "") {
       return false;
@@ -16,7 +20,7 @@ const newBoard = (function () {
     }
   };
 
-  return { getBoard, placeMarker };
+  return { getBoard, resetBoard, placeMarker };
 })();
 
 function createPlayer(name, marker) {
