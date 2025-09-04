@@ -57,6 +57,7 @@ function gameController() {
 
     currentPlayer = player1;
     display.displayTurn(currentPlayer);
+    display.displayScores(player1, player2);
     inputDialog.close();
   });
 
@@ -167,10 +168,10 @@ function displayController() {
 
     player1Marker.textContent = `${player1.marker}`;
     player1Name.textContent = `${player1.name}`;
-    player1Wins.textContent = player1.getWins();
+    player1Wins.textContent = `Wins: ${player1.getWins()}`;
     player2Marker.textContent = `${player2.marker}`;
     player2Name.textContent = `${player2.name}`;
-    player2Wins.textContent = player2.getWins();
+    player2Wins.textContent = `Wins: ${player2.getWins()}`;
   };
 
   const displayResult = (gameResult, playerName) => {
