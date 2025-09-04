@@ -24,7 +24,16 @@ const newBoard = (function () {
 })();
 
 function createPlayer(name, marker) {
-  return { name, marker };
+  let wins = 0;
+
+  const incrementWins = () => {
+    wins++;
+  };
+  const getWins = () => {
+    return wins;
+  };
+
+  return { name, marker, incrementWins, getWins };
 }
 
 function gameController() {
@@ -35,6 +44,7 @@ function gameController() {
   let player2 = createPlayer("Player 2", "O");
   let currentPlayer = player1;
   display.displayTurn(currentPlayer);
+  display.displayScores(player1, player2);
 
   inputDialog.showModal();
 
@@ -102,6 +112,8 @@ function gameController() {
     if (!validMove) return;
 
     if (checkWinner(playerMarker)) {
+      currentPlayer.incrementWins();
+      display.displayScores(player1, player2);
       display.displayResult("Winner", playerName);
     } else if (!newBoard.getBoard().includes("")) {
       display.displayResult("Draw", playerName);
@@ -145,6 +157,22 @@ function displayController() {
     playerTurn.textContent = `${currentPlayer.name}'s turn`;
   };
 
+  const displayScores = (player1, player2) => {
+    const player1Marker = document.querySelector(".player1-marker");
+    const player1Name = document.querySelector(".player1-name");
+    const player1Wins = document.querySelector(".player1-wins");
+    const player2Marker = document.querySelector(".player2-marker");
+    const player2Name = document.querySelector(".player2-name");
+    const player2Wins = document.querySelector(".player2-wins");
+
+    player1Marker.textContent = `${player1.marker}`;
+    player1Name.textContent = `${player1.name}`;
+    player1Wins.textContent = player1.getWins();
+    player2Marker.textContent = `${player2.marker}`;
+    player2Name.textContent = `${player2.name}`;
+    player2Wins.textContent = player2.getWins();
+  };
+
   const displayResult = (gameResult, playerName) => {
     const dialogGameResult = document.querySelector(".game-result");
     const dialogPlayerName = document.querySelector(".player-name");
@@ -167,6 +195,7 @@ function displayController() {
     displayBoard,
     drawMarker,
     displayTurn,
+    displayScores,
     displayResult,
   };
 }
