@@ -39,6 +39,7 @@ function createPlayer(name, marker) {
 function gameController() {
   const inputDialog = document.querySelector(".input-modal");
   const submitBtn = document.querySelector(".submit-btn");
+  const changeBtn = document.querySelector(".change-btn");
 
   let player1 = createPlayer("Player 1", "X");
   let player2 = createPlayer("Player 2", "O");
@@ -51,6 +52,11 @@ function gameController() {
   submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
     initializePlayers();
+  });
+
+  changeBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    inputDialog.showModal();
   });
 
   function initializePlayers() {
