@@ -53,6 +53,8 @@ function gameController() {
   display.displayTurn(currentPlayer);
   display.displayScores(player1, player2);
 
+  let gameOver = false;
+
   inputDialog.showModal();
 
   submitBtn.addEventListener("click", (e) => {
@@ -86,14 +88,14 @@ function gameController() {
     newBoard.resetBoard();
     player1.resetWins();
     player2.resetWins();
-    console.log(player1.getWins());
-    console.log(player2.getWins());
+    gameOver = false;
     display.displayScores(player1, player2);
     display.displayBoard();
   };
 
   const newRound = () => {
     newBoard.resetBoard();
+    gameOver = false;
     display.displayBoard();
   };
 
@@ -139,6 +141,8 @@ function gameController() {
     const playerName = currentPlayer.name;
     const playerMarker = currentPlayer.marker;
 
+    if (gameOver) return;
+
     const validMove = newBoard.placeMarker(index, `${playerMarker}`);
 
     if (!validMove) return;
@@ -147,8 +151,11 @@ function gameController() {
       currentPlayer.incrementWins();
       display.displayScores(player1, player2);
       display.displayResult("Winner", playerName);
+      gameOver = true;
+      console.log(gameOver);
     } else if (!newBoard.getBoard().includes("")) {
       display.displayResult("Draw", playerName);
+      gameOver = true;
     }
 
     switchPlayerTurn();
