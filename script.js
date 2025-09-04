@@ -50,6 +50,10 @@ function gameController() {
 
   submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
+    initializePlayers();
+  });
+
+  function initializePlayers() {
     const player1Name = document.querySelector("#player1").value;
     const player2Name = document.querySelector("#player2").value;
     player1 = createPlayer(player1Name, "X");
@@ -59,7 +63,7 @@ function gameController() {
     display.displayTurn(currentPlayer);
     display.displayScores(player1, player2);
     inputDialog.close();
-  });
+  }
 
   const newRound = () => {
     newBoard.resetBoard();
