@@ -29,17 +29,23 @@ function createPlayer(name, marker) {
   const incrementWins = () => {
     wins++;
   };
+
   const getWins = () => {
     return wins;
   };
 
-  return { name, marker, incrementWins, getWins };
+  const resetWins = () => {
+    wins = 0;
+  };
+
+  return { name, marker, incrementWins, getWins, resetWins };
 }
 
 function gameController() {
   const inputDialog = document.querySelector(".input-modal");
   const submitBtn = document.querySelector(".submit-btn");
   const changeBtn = document.querySelector(".change-btn");
+  const resetBtn = document.querySelector(".reset-btn");
 
   let player1 = createPlayer("Player 1", "X");
   let player2 = createPlayer("Player 2", "O");
@@ -59,6 +65,11 @@ function gameController() {
     inputDialog.showModal();
   });
 
+  resetBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    resetGame();
+  });
+
   function initializePlayers() {
     const player1Name = document.querySelector("#player1").value;
     const player2Name = document.querySelector("#player2").value;
@@ -70,6 +81,16 @@ function gameController() {
     display.displayScores(player1, player2);
     inputDialog.close();
   }
+
+  const resetGame = () => {
+    newBoard.resetBoard();
+    player1.resetWins();
+    player2.resetWins();
+    console.log(player1.getWins());
+    console.log(player2.getWins());
+    display.displayScores(player1, player2);
+    display.displayBoard();
+  };
 
   const newRound = () => {
     newBoard.resetBoard();
