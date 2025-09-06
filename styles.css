@@ -47,7 +47,7 @@ body {
   display: grid;
   width: 500px;
   height: 500px;
-  border: 1px solid var(--dark-green);
+  border: 2px solid var(--dark-green);
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
