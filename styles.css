@@ -8,13 +8,14 @@
 }
 
 body {
-  background-color: #cacaca;
+  background-color: var(--background-color);
 }
 
 :root {
   --dark-green: #1c352d;
   --light-green: #a6b28b;
   --white: #f9f6f3;
+  --background-color: #eeeeee;
 }
 
 .title {
@@ -53,7 +54,7 @@ body {
 .board-cell {
   background-color: var(--white);
   color: var(--dark-green);
-  font-size: 4rem;
+  font-size: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +92,6 @@ body {
   border: none;
   border-radius: 1rem;
   box-shadow: -4px 3px 3px 1px rgba(28, 53, 45, 0.3);
-
   margin: revert;
   padding: 2rem;
   min-height: 200px;
