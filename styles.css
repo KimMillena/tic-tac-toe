@@ -11,6 +11,10 @@
   --dark-green: #1c352d;
 }
 
+body {
+  background-color: #a6b28b;
+}
+
 .title {
   text-align: center;
   margin: 3rem 0;
