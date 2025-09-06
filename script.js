@@ -150,11 +150,11 @@ function gameController() {
     if (checkWinner(playerMarker)) {
       currentPlayer.incrementWins();
       display.displayScores(player1, player2);
-      display.displayResult("Winner", playerName);
+      display.displayResult("WINNER", playerName);
       gameOver = true;
       console.log(gameOver);
     } else if (!newBoard.getBoard().includes("")) {
-      display.displayResult("Draw", playerName);
+      display.displayResult("DRAW", playerName);
       gameOver = true;
     }
 
@@ -217,8 +217,12 @@ function displayController() {
     const dialogPlayerName = document.querySelector(".player-name");
     const newBtn = document.querySelector(".new-btn");
 
-    dialogGameResult.textContent = `${gameResult}:`;
-    dialogPlayerName.textContent = `${playerName}`;
+    if (gameResult === "DRAW") {
+      dialogGameResult.textContent = `It's a ${gameResult}`;
+    } else {
+      dialogGameResult.textContent = `${gameResult}:`;
+      dialogPlayerName.textContent = `${playerName}`;
+    }
 
     newBtn.addEventListener("click", () => {
       game.newRound();
