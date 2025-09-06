@@ -30,7 +30,7 @@ body {
   color: var(--dark-green);
   font-size: 2rem;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .main {
@@ -49,6 +49,7 @@ body {
   height: 500px;
   border: 2px solid var(--dark-green);
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  margin-bottom: 1rem;
 }
 
 .board-cell {
@@ -59,6 +60,10 @@ body {
   align-items: center;
   justify-content: center;
   border: 1px solid var(--dark-green);
+}
+
+.board-cell:hover {
+  background-color: rgba(28, 53, 45, 0.1);
 }
 
 /* PLAYER SCORES STYLINGS */
@@ -72,7 +77,11 @@ body {
 
 .player-container {
   display: flex;
-  gap: 1rem;
+  border: 3px solid var(--dark-green);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  gap: 1.25rem;
 }
 
 .left,
@@ -83,6 +92,28 @@ body {
 
 .right {
   flex-direction: column;
+  justify-content: center;
+}
+
+/* OPTIONS STYLINGS */
+
+.change-btn,
+.reset-btn {
+  min-width: 150px;
+  font-weight: 700;
+  color: var(--dark-green);
+  background: none;
+  font-size: 1rem;
+  padding: 1rem;
+  border: 2px solid var(--dark-green);
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.change-btn:hover,
+.reset-btn:hover {
+  color: var(--white);
+  background-color: rgba(28, 53, 45, 0.8);
 }
 
 /* MODAL STYLINGS */
@@ -119,6 +150,7 @@ body {
 }
 
 .submit-btn {
+  font-weight: 700;
   color: var(--dark-green);
   background: none;
   font-size: 1rem;
@@ -126,6 +158,11 @@ body {
   border: 2px solid var(--dark-green);
   border-radius: 1rem;
   cursor: pointer;
+}
+
+.submit-btn:hover {
+  color: var(--white);
+  background-color: rgba(28, 53, 45, 0.8);
 }
 
 /* GAME RESULT MODAL STYLINGS */
@@ -168,6 +205,7 @@ body {
 }
 
 .new-btn {
+  font-weight: 700;
   color: var(--dark-green);
   background: none;
   font-size: 1rem;
@@ -175,4 +213,9 @@ body {
   border: 2px solid var(--dark-green);
   border-radius: 1rem;
   cursor: pointer;
+}
+
+.new-btn:hover {
+  color: var(--white);
+  background-color: rgba(28, 53, 45, 0.8);
 }
