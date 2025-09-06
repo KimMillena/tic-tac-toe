@@ -45,8 +45,9 @@ body {
 
 .board {
   display: grid;
-  width: 500px;
-  height: 500px;
+  width: clamp(350px, 50%, 400px);
+  height: auto;
+  aspect-ratio: 1/1;
   border: 2px solid var(--dark-green);
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   margin-bottom: 1rem;
@@ -71,16 +72,20 @@ body {
 .scores {
   min-width: 400px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .player-container {
   display: flex;
+  justify-content: center;
   border: 3px solid var(--dark-green);
   border-radius: 1rem;
   margin-bottom: 1rem;
   padding: 0 1rem;
+  min-width: 200px;
   gap: 1.25rem;
 }
 
@@ -96,6 +101,13 @@ body {
 }
 
 /* OPTIONS STYLINGS */
+
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
 
 .change-btn,
 .reset-btn {
