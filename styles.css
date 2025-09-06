@@ -7,20 +7,27 @@
   font-family: "Kalam", cursive, sans-serif;
 }
 
-:root {
-  --dark-green: #1c352d;
+body {
+  background-color: #cacaca;
 }
 
-body {
-  background-color: #a6b28b;
+:root {
+  --dark-green: #1c352d;
+  --light-green: #a6b28b;
+  --white: #f9f6f3;
 }
 
 .title {
+  color: var(--dark-green);
+  font-size: 4rem;
   text-align: center;
-  margin: 3rem 0;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 .player-turn {
+  color: var(--dark-green);
+  font-size: 2rem;
   text-align: center;
   margin-bottom: 3rem;
 }
@@ -30,7 +37,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 /* BOARD STYLINGS */
@@ -39,16 +46,18 @@ body {
   display: grid;
   width: 500px;
   height: 500px;
-  border: 1px solid black;
+  border: 1px solid var(--dark-green);
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
 .board-cell {
+  background-color: var(--white);
+  color: var(--dark-green);
   font-size: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 1px solid var(--dark-green);
 }
 
 /* PLAYER SCORES STYLINGS */
@@ -78,9 +87,11 @@ body {
 /* MODAL STYLINGS */
 
 .input-modal {
+  background-color: var(--white);
   border: none;
   border-radius: 1rem;
-  box-shadow: -4px 3px 3px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: -4px 3px 3px 1px rgba(28, 53, 45, 0.3);
+
   margin: revert;
   padding: 2rem;
   min-height: 200px;
@@ -102,15 +113,16 @@ body {
 
 .form-row input {
   font-size: 1.1rem;
-  border: 2px solid #1c352d;
+  border: 2px solid var(--dark-green);
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
 
 .submit-btn {
+  background: none;
   font-size: 1rem;
   padding: 0.5rem;
-  border: 2px solid #1c352d;
+  border: 2px solid var(--dark-green);
   border-radius: 1rem;
   cursor: pointer;
 }
@@ -138,4 +150,15 @@ body {
 
 .modal-content .player-name {
   font-size: 1.5rem;
+}
+
+.left,
+.right {
+  color: var(--dark-green);
+  font-size: 1.25rem;
+}
+
+.left .player1-marker,
+.left .player2-marker {
+  font-size: 3rem;
 }
