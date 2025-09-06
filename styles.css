@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Kalam", cursive, sans-serif;
 }
 
 .title {
@@ -67,12 +70,10 @@
 /* MODAL STYLINGS */
 
 .input-modal {
-  position: absolute;
-  top: 37%;
-  left: 50%;
   border: none;
   border-radius: 1rem;
   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
+  margin: revert;
   padding: 1rem;
   min-height: 200px;
 }
