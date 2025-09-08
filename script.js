@@ -158,7 +158,6 @@ function gameController() {
     }
 
     switchPlayerTurn();
-    console.log(newBoard.getBoard());
   };
 
   return { playRound, newRound };
@@ -217,6 +216,7 @@ function displayController() {
     const newBtn = document.querySelector(".new-btn");
 
     if (gameResult === "DRAW") {
+      dialogPlayerName.textContent = "";
       dialogGameResult.textContent = `It's a ${gameResult}`;
     } else {
       dialogGameResult.textContent = `${gameResult}:`;
